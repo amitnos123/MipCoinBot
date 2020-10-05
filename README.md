@@ -1,4 +1,4 @@
-# MipRpBot
+# MipCoinBot
 
 General Notes
 -------------
