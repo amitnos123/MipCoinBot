@@ -9,23 +9,24 @@ module.exports = {
         '\n' +
         '[Character name 1]' +
         '\n' +
-        '[ amount]' +
+        '[Transfer amount]' +
         '\n' +
         '[Character name 2]' +
         '\n\n' +
         '__Argument__' +
         '\n' +
-        '`[Character name 1]` - AAAAA' +
+        '`[Character name 1]` - Character\'s name which will give the money' +
         '\n' +
-        '`[Transfer amount]` - AAAAA' +
+        '`[Transfer amount]` - The amount of money which is transfered' +
         '\n' +
-        '`[Character name 2]` - AAAAA',
+        '`[Character name 2]` - Character\'s name which will get the money',
     args: true,
     execute(client, message, args) {
         if (args.length !== 3) {
             return;
         } else {
             if (!Number.isInteger(parseFloat(args[1]))) {
+                message.channel.send('Transfer amount isn\'t a interger.');
                 return;
             }
 
@@ -33,10 +34,12 @@ module.exports = {
             const moneyMan = new moneyManager();
 
             if (!moneyMan.character_exists(args[0])) {
+                message.channel.send(`Character ${args[0]} doesn't exist.`);
                 return;
             }
 
             if (!moneyMan.character_exists(args[2])) {
+                message.channel.send(`Character ${args[2]} doesn't exist.`);
                 return;
             }
 
@@ -47,6 +50,7 @@ module.exports = {
             const character1Data = moneyMan.get(character1Name);
 
             if (character1Data.money < moneyTrs) { //character1 doesn't have enough money
+                message.channel.send(`Character ${args[0]} doesn't have enought money to transfer.`);
                 return;
             }
 
@@ -92,10 +96,19 @@ module.exports = {
             const runTime = 30 * 1000;
             message.channel.awaitMessages(filter, { time: runTime, max: 2, errors: ['time'] })
                 .then(messages => {
-                    message.channel.send(`You've entered: ${messages.first().content}`);
+                    switch (messages.first().content) {
+                        case constants.YES:
+                            moneyMan.character_update(character1Name, parseFloat(character1Data.money) - parseFloat(moneyTrs));
+                            moneyMan.character_update(character2Name, parseFloat(character2Data.money) + parseFloat(moneyTrs));
+                            message.channel.send('Transfer completed :+1:');
+                            break;
+                        case constants.No:
+                            message.channel.send('Transfer canceled :-1:');
+                            break;
+                    }
                 })
                 .catch((error) => {
-                    console.log(error);
+                    lw.log_message('error', error);
                     message.channel.send('Transfer canceled.');
                 });
         }
