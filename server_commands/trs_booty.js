@@ -85,15 +85,23 @@ module.exports = {
                 const username = newMessage.author.username;
 
                 if (character1Approves) {
-                    return character2Data.owner === username;
+                    if (character2Data.owner === username) {
+                        return true;
+                    } else {
+                        return false;
+                    }
                 } else if (character2Approves) {
-                    return character1Data.owner === username;
+                    if (character1Data.owner === username) {
+                        return true;
+                    } else {
+                        return false;
+                    }
                 } else {
                     return false;
                 }
             };
 
-            const runTime = 30 * 1000;
+            const runTime = 7 * 24 * 60 * 60 * 1000;
             message.channel.awaitMessages(filter, { time: runTime, max: 2, errors: ['time'] })
                 .then(messages => {
                     switch (messages.first().content) {
