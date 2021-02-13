@@ -22,7 +22,7 @@ module.exports = {
         '`[Character name 2]` - Character\'s name which will get the money',
     args: true,
     execute(client, message, args) {
-        if (args.length !== 3) {
+        if (args.length !== 3) { // Number of arguments that is expect
             return;
         } else {
             if (!Number.isInteger(parseFloat(args[1]))) {
@@ -32,6 +32,8 @@ module.exports = {
 
             const moneyManager = require('money_manager');
             const moneyMan = new moneyManager();
+
+            // Validation of arguments
 
             if (!moneyMan.character_exists(args[0])) {
                 message.channel.send(`Character ${args[0]} doesn't exist.`);
@@ -53,6 +55,8 @@ module.exports = {
                 message.channel.send(`Character ${args[0]} doesn't have enought money to transfer.`);
                 return;
             }
+
+            // Validate that at least one of the characters belongs to the use which called the command
 
             const character2Data = moneyMan.get(character2Name);
 
@@ -110,7 +114,7 @@ module.exports = {
                             moneyMan.character_update(character2Name, parseFloat(character2Data.money) + parseFloat(moneyTrs));
                             message.channel.send('Transfer completed :+1:');
                             break;
-                        case constants.No:
+                        case constants.NO:
                             message.channel.send('Transfer canceled :-1:');
                             break;
                     }
