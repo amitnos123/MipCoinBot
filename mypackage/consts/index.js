@@ -1,4 +1,4 @@
-const basePath = '/app/';
+const basePath = 'e:\\discord_bots\\MipCoinBot\\';
 const command_option_prefix = '-';
 
 module.exports = Object.freeze({
@@ -64,16 +64,9 @@ module.exports = Object.freeze({
 	START_CHAR_MEMBER_NAME: '{',
 	END_CHAR_MEMBER_NAME: '}',
 
-	// ROLES
-	ACCESS_ROLE_NAME: 'Wholesome Kinkster',
+	// YES/NO
+	YES: 'yes',
+	NO: 'no',
 
-	// DATA
-	WELCOME_SERVER_PASSWORD: 'I have read it all and I am ready to meet wholesomely kinky peeps!',
-	WELCOME_MESSAGE: 'Welcome new peep, {memberName} ! Please check out the <get-a-role> and <roster> channels and make yourself at home here!',
-	// GENERAL_CHANNEL_ID: '388863382402498563', //Prod
-	// GET_A_ROLE_CHANNEL_ID: '423882280696676364', //Prod
-	// ROSTER_CHANNEL_ID: '389810905774555138', //Prod
-	GENERAL_CHANNEL_ID: '615195381285912600', //Test
-	GET_A_ROLE_CHANNEL_ID: '616273079399743681', //Test
-	ROSTER_CHANNEL_ID: '616273099708563458' //Test
+	STARTING_MONEY: 100
 });
