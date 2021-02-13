@@ -1,5 +1,5 @@
 const path = require('path');
-const constants = require('consts');
+const constants = require('../mypackage/consts');
 module.exports = {
     name: path.basename(__filename).split('.').slice(0, -1).join('.'),
     description: 'Create\\update the whitelist for a command.',
@@ -35,8 +35,8 @@ module.exports = {
                 authType = undefined; // If authComManager.auth_update_command get 'undefined' then doesn't update this value
             }
 
-            const commandsIdManager = require('commands_id_manager');
-            const authorizationCommandManager = require('authorization_command_manager');
+            const commandsIdManager = require('../mypackage/commands_id_manager');
+            const authorizationCommandManager = require('../mypackage/authorization_command_manager');
 
             const comIdManager = new commandsIdManager();
             const authComManager = new authorizationCommandManager();

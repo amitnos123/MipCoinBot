@@ -1,6 +1,6 @@
 const path = require('path');
-const constants = require('consts');
-const log_writer = require('log_writer');
+const constants = require('../mypackage/consts');
+const log_writer = require('../mypackage/log_writer');
 const lw = new log_writer(constants.LOG_DIRECTORY_PATH);
 module.exports = {
     name: path.basename(__filename).split('.').slice(0, -1).join('.'),
@@ -22,7 +22,7 @@ module.exports = {
             return;
         } else {
 
-            const moneyManager = require('money_manager');
+            const moneyManager = require('../mypackage/money_manager');
             const moneyMan = new moneyManager();
 
             const characterName = args[0];

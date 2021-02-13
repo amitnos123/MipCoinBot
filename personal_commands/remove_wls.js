@@ -16,10 +16,10 @@ module.exports = {
         } else {
             const setting = args[0];
 
-            const constants = require('consts');
+            const constants = require('../mypackage/consts');
 
             if (setting !== constants.AUTHORIZATION_SETTINGS_ROOT) {
-                const authorizationCommandManager = require('authorization_command_manager');
+                const authorizationCommandManager = require('../mypackage/authorization_command_manager');
                 const authSettingManager = new authorizationCommandManager.authorizationSettings();
 
                 authSettingManager.remove(setting);

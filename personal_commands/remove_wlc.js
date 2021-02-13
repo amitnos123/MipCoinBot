@@ -16,10 +16,10 @@ module.exports = {
         } else {
             const commandName = args[0];
 
-            const authorizationCommandManager = require('authorization_command_manager');
+            const authorizationCommandManager = require('../mypackage/authorization_command_manager');
             const authComManager = new authorizationCommandManager();
 
-            const commandsIdManager = require('commands_id_manager');
+            const commandsIdManager = require('../mypackage/commands_id_manager');
             const comIdManager = new commandsIdManager();
 
             const commandId = comIdManager.get_id(commandName);

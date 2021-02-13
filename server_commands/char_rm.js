@@ -1,6 +1,6 @@
 const path = require('path');
-const constants = require('consts');
-const log_writer = require('log_writer');
+const constants = require('../mypackage/consts');
+const log_writer = require('../mypackage/log_writer');
 const lw = new log_writer(constants.LOG_DIRECTORY_PATH);
 module.exports = {
     name: path.basename(__filename).split('.').slice(0, -1).join('.'),
@@ -17,11 +17,11 @@ module.exports = {
         if (args.length !== 1) {
             return;
         } else {
-            const moneyManager = require('money_manager');
+            const moneyManager = require('../mypackage/money_manager');
             const moneyMan = new moneyManager();
 
             if (moneyMan.character_exists(args[0])) {
-                const authorizationCommandManager = require('authorization_command_manager');
+                const authorizationCommandManager = require('../mypackage/authorization_command_manager');
                 const authComManager = new authorizationCommandManager();
                 if (moneyMan.get(args[0]).owner === message.author.username || authComManager.is_root(message.author.username)) {
                     moneyMan.character_remove(args[0]);

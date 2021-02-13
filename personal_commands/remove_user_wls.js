@@ -1,5 +1,5 @@
 const path = require('path');
-const constants = require('consts');
+const constants = require('../mypackage/consts');
 module.exports = {
     name: path.basename(__filename).split('.').slice(0, -1).join('.'),
     description: 'Remvoe a user from an authorization setting.',
@@ -27,7 +27,7 @@ module.exports = {
             // Arguments
             const setting = args[0];
 
-            const authorizationCommandManager = require('authorization_command_manager');
+            const authorizationCommandManager = require('../mypackage/authorization_command_manager');
             const authorizationSettings = new authorizationCommandManager.authorizationSettings();
 
             if (authorizationSettings.auth_settings_exists(setting)) {

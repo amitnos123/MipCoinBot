@@ -17,7 +17,7 @@ module.exports = {
         '**If not given**, it will return for all the settings',
     args: true,
     execute(client, message, args) {
-        const authorizationCommandManager = require('authorization_command_manager');
+        const authorizationCommandManager = require('../mypackage/authorization_command_manager');
         const authorizationSettings = new authorizationCommandManager.authorizationSettings();
 
         let messageSend = '';

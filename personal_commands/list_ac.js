@@ -15,8 +15,8 @@ module.exports = {
         ' ** If not given**, it will return for all the commands',
     args: true,
     execute(client, message, args) {
-        const commandsIdManager = require('commands_id_manager');
-        const authorizationCommandManager = require('authorization_command_manager');
+        const commandsIdManager = require('../mypackage/commands_id_manager');
+        const authorizationCommandManager = require('../mypackage/authorization_command_manager');
 
         const authComManager = new authorizationCommandManager();
         const comIdManager = new commandsIdManager();
