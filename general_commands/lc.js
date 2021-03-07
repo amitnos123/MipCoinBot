@@ -8,12 +8,6 @@ module.exports = {
     args: true,
     execute(client, message, args) {
 
-        const log_writer = require('../mypackage/log_writer');
-        const lw = new log_writer(constants.LOG_DIRECTORY_PATH);
-
-        console.log('aaaa');
-        lw.log_message('debug', 'test1');
-
         const embedCommandsExplanation = new discord.RichEmbed()
             .setColor('#ff0000') // RED
             .setTitle(':information_source:  Commands\' Explanation');
