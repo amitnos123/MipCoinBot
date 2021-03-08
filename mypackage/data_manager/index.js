@@ -27,6 +27,10 @@ module.exports = class data_manager {
 
         const fs = require('fs');
 
+		if (!fs.existsSync(filePath)) { //file doesn't exists
+			return {};
+		}
+		
         let readData = '';
         readData = fs.readFileSync(filePath, "utf8");
 
@@ -50,7 +54,7 @@ module.exports = class data_manager {
         }
 
         const fs = require('fs');
-        const filePath = this.dataDir + '/' + fileName;
+        const filePath = this.dataDir + '\\' + fileName;
 
         const jsonStringData = JSON.stringify(data);
 
