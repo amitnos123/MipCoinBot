@@ -105,4 +105,5 @@ dist
 .tern-port
 
 config.json
-data/*
+data/MONEY.json
+data/COMMANDS_ID.json
