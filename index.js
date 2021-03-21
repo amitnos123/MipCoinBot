@@ -1,5 +1,5 @@
-const log_writer = require('log_writer');
-const constants = require('consts');
+const log_writer = require('./mypackage/log_writer');
+const constants = require('./mypackage/consts');
 const path = require('path');
 const fs = require('fs');
 
@@ -11,7 +11,7 @@ lw.log_message('load', 'Loaded discord.js');
 lw.log_message('start', 'Creating client');
 const client = new Discord.Client();
 
-const commandsIdManager = require('commands_id_manager');
+const commandsIdManager = require('./mypackage/commands_id_manager');
 lw.log_message('start', 'Loaded commands_id_manager');
 const comIdManager = new commandsIdManager();
 
@@ -107,7 +107,7 @@ client.on('message', message => {
 
             lw.log_message('debug', `${command} was called, with arguments: ${JSON.stringify(args)} by '${message.author.username}'`);
 
-            const authorizationCommandManager = require('authorization_command_manager');
+            const authorizationCommandManager = require('./mypackage/authorization_command_manager');
             const authComManager = new authorizationCommandManager();
 
             const commandId = comIdManager.get_id(command);
@@ -159,7 +159,7 @@ client.on('message', message => {
  * @returns {void}
  */
 function error404(message) {
-    const constants = require('consts');
+    const constants = require('./mypackage/consts');
     if (constants.SHOW_ERORR_404) {
         message.channel.send(constants.MESSAGE_ERROR_404);
     }
