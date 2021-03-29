@@ -49,9 +49,7 @@ module.exports = class log_writer {
 		const time = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
 
 		console.log(`[${date} ${time}]${debugLvl}:`, message);
-		// fs.appendFileSync(`/${this.logDir}\\log-${date}.txt`, `[${time}]${debugLvl}:${JSON.stringify(message, undefined, 2)}\n`);
-		fs.appendFileSync(`${this.logDir}\\mip.txt`, `[${time}]${debugLvl}:${JSON.stringify(message, undefined, 2)}\n`);
-
+		fs.appendFileSync(`${this.logDir}\\log-${date}.txt`, `[${time}]${debugLvl}:${JSON.stringify(message, undefined, 2)}\n`);
 	}
 
 	/**
